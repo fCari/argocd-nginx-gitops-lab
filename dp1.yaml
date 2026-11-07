@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+      kubernetes.io/change-cause: "imagen nginx:latest"
+  name: mi-primer-deployment
+  labels:
+    app: mi-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+      - name: web
+        image: nginx:latest
+        
